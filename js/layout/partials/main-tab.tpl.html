@@ -1,40 +1,6 @@
 <div class="tab-pane active" id="main">
-	<h5>Distance Selection Example</h5>
-	</br>
-	<form class="form-horizontal">
-			<fieldset>
-			<div class="form-group">
-		      	<label for="innerBuffer" class="col-lg-2 small">Inner</br>Distance</label>
-		      	<div class="col-lg-10">
-		      	 	<input type="text" class="form-control" id="innerBuffer" placeholder="250">
-		      	</div>
-		    </div>
-		    <div class="form-group">
-    		    <label for="outerBuffer" class="col-lg-2 small">Outer</br>Distance</label>
-		      	<div class="col-lg-10">
-		        	<input type="text" class="form-control" id="outerBuffer" placeholder="500">
-		      	</div>	
-		    </div>
-		</fieldset>
-	</form>
-	<button class="btn btn-default pull-left" id="toggleShowBuffers">Show All Buffers</button>
-	<button class="btn btn-warning pull-right" id="resetButton" >Reset</button>
-	</br>
-	<hr>
-	<h5>How To</h5>
-	<p>Enter an inner and outer buffer distance in FEET and start clicking points!</p>
-	<hr>
-	<h5>Geoprocessing Steps</h5>
-	<p>
-		1. We use D3.js to read a CSV file and display the data as GeoJSON on the map.</p>
-	<p>
-		2. The user can click a point, and that point is then turned in to a turf.point object.</p>
-	<p>
-		3. We then create two buffers of the point, one for the inner number and outer buffer you specified.</p>
-	<p>
-		4. We use turf.erase to remove the inner polygon from the outer polygon, creating a donut!</p>
-	<p>
-		5. Now we use turf.within to extract just the GeoJSON points from the donut for you to select a point within your specified distances.</p>
-	<p>
-		6. Finally, we use turf.union to union all of the distance donuts into a single polygon, and append the selected points to the Output tab.</p>
+    <div class="btn-group">
+        <label class="btn btn-default" ng-model="radioModel" btn-radio="'Left'" uncheckable>Road Map</label>
+        <label class="btn btn-default" ng-model="radioModel" btn-radio="'Right'" uncheckable>Satellite Map</label>
+    </div>
 </div>

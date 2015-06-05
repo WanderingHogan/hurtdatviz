@@ -16,10 +16,10 @@
     "tests"
   ],
   "dependencies": {
-    "angular": "~1.4",
-    "angular-route": "~1.4",
+    "angular": "1.4.0",
+    "angular-route": "1.4.0",
     "angular-bootstrap": "0.13.0",
     "angular-leaflet":"0.8.1",
-    "bootstrap":"latest"
+    "bootswatch":"3.3.4"
   }
 }

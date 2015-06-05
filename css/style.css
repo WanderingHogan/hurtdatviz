@@ -28,3 +28,7 @@ html, body, .container, #map, .container {
 	border-radius: 0;
 	font-size: 20px;
 }
+
+.tab-pane {
+	padding-top: 10px;
+}
