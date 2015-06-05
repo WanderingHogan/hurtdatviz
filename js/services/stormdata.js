@@ -52,7 +52,8 @@ angular.module('hurdat.data',['ngRoute']).factory('stormData', function($http, $
                     }
                 });
                 hurricanes.push(currentHurricane);
-                console.log(hurricanes);
+                // console.log(hurricanes);
+                console.log('hi');
 
                 defer.resolve(splitData);
             })

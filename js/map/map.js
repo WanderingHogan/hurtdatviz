@@ -1,13 +1,14 @@
 var mapStuff = angular.module('mapStuff',['ngRoute']);
 
-mapStuff.controller('mapController', ['$scope', 'stormData',
-	function($scope, stormData){
+mapStuff.controller('mapController', ['$scope', '$rootScope', 'stormData',
+	function($scope, $rootScope, stormData){
+
+
 
 			// default baltimore starts
 		    var startX = 39.290452,
 		        startY = -76.614090,
 		        startZ = 13;
-
 
 		    var map = L.map('map',{
 		    	'inertia': false,
@@ -17,17 +18,40 @@ mapStuff.controller('mapController', ['$scope', 'stormData',
 		        'scrollWheelZoom': false
 		    }).setView([startX, startY], startZ);
 
-		    this.basemap = L.tileLayer('https://{s}.tiles.mapbox.com/v3/{id}/{z}/{x}/{y}.png', {
+		    $scope.basemap = L.tileLayer('https://{s}.tiles.mapbox.com/v3/{id}/{z}/{x}/{y}.png', {
+		        'maxZoom': 18,
+		        'attribution': '© mapbox',
+		        'id': 'examples.map-i875mjb7'
+		    }).addTo(map);
+
+		    $scope.satellite = L.tileLayer('https://{s}.tiles.mapbox.com/v3/{id}/{z}/{x}/{y}.png', {
 		        'maxZoom': 18,
 		        'attribution': '© mapbox',
 		        'id': 'examples.map-20v6611k'
-		    }).addTo(map);
+		    });
 
-		    this.satellite = L.tileLayer('https://{s}.tiles.mapbox.com/v3/{id}/{z}/{x}/{y}.png', {
-		        'maxZoom': 18,
-		        'attribution': '© mapbox',
-		        'id': 'mapbox.streets'
-		    }).addTo(map);
+
+			/*
+				this section is for map controlls
+			*/
+		    $rootScope.$on('baseLayerChange', function(e,d){
+		    	if(d === 'road'){
+		    		$scope.basemap.addTo(map);
+		    		try {
+		    			map.removeLayer($scope.satellite);
+		    		} catch(err){
+		    			//err
+		    		}
+		    	} else {
+		    		$scope.satellite.addTo(map);
+		    		try {
+		    			map.removeLayer($scope.roads);
+		    		} catch(err){
+		    			//err
+		    		}
+		    	}
+		    });
+
 	//
 }]);
 
